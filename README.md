@@ -1,50 +1,32 @@
 # BurpCrypto
+
 [![Releases](https://img.shields.io/github/v/release/whwlsfb/BurpCrypto.svg?include_prereleases&style=square)](https://github.com/whwlsfb/BurpCrypto/releases)
 [![Downloads](https://img.shields.io/github/downloads/whwlsfb/BurpCrypto/total?label=Release%20Download)](https://github.com/whwlsfb/BurpCrypto/releases/latest)
 
-Burpcrypto is a collection of burpsuite encryption plug-ins, supporting AES/RSA/DES/ExecJs(execute JS encryption code in burpsuite).
+BurpCrypto是一款支持多种加密算法以及直接执行浏览器JS代码的BurpSuite插件。
+[English](./README.md) | [简体中文](./README_zh.md)
 
-English | [简体中文](./README-zh_CN.md)
+## 功能描述
 
-# Build
-`$ mvn package`
-# Usage
-- Download the precompiled jar package from [Releases](https://github.com/whwlsfb/BurpCrypto/releases).
-- Add this jar package to your burpsuite's Extensions.
-- Switch to BurpCrypto tab, select you need Cipher tab.
-- Set key or some value.
-- press "Add processor", and give a name for this processor.
-- Switch to Intruder->Payloads->Payload Processing.
-- press "Add", select "Invoke Burp extension", and select processor you just created.
-- press "Start attack", have fun!
+BurpCrypto插件主要提供了以下功能：
 
-## Key Example
+1. **多种加密算法支持**：支持AES、DES、RSA等多种对称和非对称加密算法。
+2. **执行JS代码**：可以执行自定义的JS脚本，以应对复杂的加密逻辑。
+3. **密文解密**：支持通过密文查询原始明文的功能。
 
-- Aes Key(UTF8String): abcdefgabcdefg12
-- Aes IV(UTF8String): abcdefgabcdefg12
-- Rsa X509 Key: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCC0hrRIjb3noDWNtbDpANbjt5Iwu2NFeDwU16Ec87ToqeoIm2KI+cOs81JP9aTDk/jkAlU97mN8wZkEMDr5utAZtMVht7GLX33Wx9XjqxUsDfsGkqNL8dXJklWDu9Zh80Ui2Ug+340d5dZtKtd+nv09QZqGjdnSp9PTfFDBY133QIDAQAB
-- Rsa Modulus: ca27d90f03753cbbc9958011baf701ac99305b63f68e26ab5617593e01d2fb519127fb87bafbe6e0472ec3a038575fa292adadbc79390a955a61b29431f78f4734773048a45dcf100e23cabf2df11a55aa90cd6b024a44eed1096c3b9e1408d46aae54d7291b82fe4b7867c5eaa45e9cc0ba7f7ae3e5593337c7dcbace2d02ed2fbbff26c6df8a32bb26be80603fcd94c6c8dbd67878d77b37fedcf808e3d8f469aaa7c65d033d547a5c8ea9bdd5c89b836c65852f355a5efd9c7137a186a62b5eb0e052c8be3096d3b51133f8a8c108292a296c99d37bad42bcc3f6c39fa5e583582942b4fc4e7ff4b6779fff5bbaddc65b19c7c57d8cdb39b1a994e08d4a2f50793d8f707d069c380baf0f64bfdce3b35d0b5c5c59348a35a082012aaf4991080abf518b55787969ff24186cb95f7e7218c904cf1dcaeb5bed723e305b83f2e85d6f116d2c7400f9e49d904db8a5a3a0701cdb579fbf3128511acd0f789ece1233ed926d705b3b0dfa34bf33f5ae4bdc611a602aa03aaae13400bc7ad3813ea4474dc62de3d0cb1f5aac277d895a75d38f9b920938fa6b1de35bd6132798c122403c685bdb6e5e24bbd70cfb3e968da0b8affd398e539e7c1e7add09891780bcbd278f3900499ae09cee0dc62e3f92e70001bab6d46261d2801a37f80d84d0e39fce6eaedf106a61b5961960641b9db0e4e23c770e6370ac5d61c6c9eb0f07
-- Rsa Exponent: 010001
-- DES Key: 12345678
-- DESede Key: 123456781234567812345678
+## 使用方法
 
+### 加密操作
 
-## Screenshots
+通过在插件的相应选项卡中配置加密算法和密钥，然后点击`Add processor`按钮，成功添加加密处理器后，即可在BurpSuite的各个功能模块中调用。
 
-AES Example:
+### 解密操作
 
-![](screenshot/aes.gif)
+通过在插件中完整选中密文内容，右单击后找到BurpCrypto菜单中的`Get PlainText`功能，即可获取原始明文。
 
-ExecJs Example (Here is the modified MD5 algorithm):
+## 安装步骤
 
-![](screenshot/execjs.gif)
+1. 从[BurpCrypto的Github页面](https://github.com/whwlsfb/BurpCrypto/releases)下载已编译好的版本。
+2. 将下载的插件文件在BurpSuite的扩展列表中添加。
+3. 插件加载成功后，即可在BurpSuite中使用BurpCrypto进行加密和解密操作。
 
-Quick Crypto:
-
-![](screenshot/quick_crypto.gif)
-
-
-# 404Starlink
-![png](https://github.com/knownsec/404StarLink-Project/raw/master/logo.png)
-
-BurpCrypto has joined [404Starlink](https://github.com/knownsec/404StarLink).
