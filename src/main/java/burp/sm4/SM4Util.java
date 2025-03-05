@@ -1,7 +1,6 @@
 package burp.sm4;
 
 import burp.utils.CipherInfo;
-import burp.utils.OutFormat;
 import burp.utils.Utils;
 import cn.hutool.crypto.Mode;
 import cn.hutool.crypto.Padding;
