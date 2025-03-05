@@ -52,20 +52,45 @@ public class RTextAreaUI extends BasicTextAreaUI {
         return new RTextAreaUI(textArea);
     }
 
+    /**
+     * RTextAreaUI类的构造函数
+     * 该构造函数用于初始化RTextAreaUI实例，确保传入的参数是RTextArea的实例
+     *
+     * @param textArea 必须是RTextArea类的实例，否则将抛出IllegalArgumentException异常
+     *
+     * 为什么需要这个构造函数：
+     * 这个构造函数的设计确保了RTextAreaUI只能被用于RTextArea类型的对象
+     * 这是一种类型检查机制，避免了在UI设置过程中可能出现的类型不匹配问题
+     *
+     * 为什么这里要抛出IllegalArgumentException异常：
+     * 抛出异常是为了确保代码的健壮性和可靠性如果传入的参数类型不正确，
+     * 则立即反馈给调用者错误信息，避免了潜在的、难以追踪的错误
+     */
     public RTextAreaUI(JComponent textArea) {
+        // 检查传入的textArea是否为RTextArea的实例，如果不是，则抛出异常
         if (!(textArea instanceof RTextArea)) {
             throw new IllegalArgumentException("RTextAreaUI is for instances of RTextArea only!");
         } else {
+            // 如果是RTextArea的实例，则将其转换为RTextArea类型并赋值给this.textArea
             this.textArea = (RTextArea)textArea;
         }
     }
 
+    /**
+     * 修正Nimbus默认样式下的一些问题
+     * 此方法针对JTextComponent编辑器组件，修正或设置一些默认的样式属性，以确保组件在使用Nimbus样式时表现正常
+     * 主要包括： caret颜色、选中背景色、选中文本颜色、禁用文本颜色、边框和内边距
+     *
+     * @param editor JTextComponent的实例，需要修正样式的编辑器组件
+     */
     private void correctNimbusDefaultProblems(JTextComponent editor) {
+        // 检查并设置 caret颜色
         Color c = editor.getCaretColor();
         if (c == null) {
             editor.setCaretColor(RTextArea.getDefaultCaretColor());
         }
 
+        // 检查并设置 选中背景色
         c = editor.getSelectionColor();
         if (c == null) {
             c = UIManager.getColor("nimbusSelectionBackground");
@@ -79,6 +104,7 @@ public class RTextAreaUI extends BasicTextAreaUI {
             editor.setSelectionColor((Color)c);
         }
 
+        // 检查并设置 选中文本颜色
         c = editor.getSelectedTextColor();
         if (c == null) {
             c = UIManager.getColor("nimbusSelectedText");
@@ -92,6 +118,7 @@ public class RTextAreaUI extends BasicTextAreaUI {
             editor.setSelectedTextColor((Color)c);
         }
 
+        // 检查并设置 禁用文本颜色
         c = editor.getDisabledTextColor();
         if (c == null) {
             c = UIManager.getColor("nimbusDisabledText");
@@ -105,16 +132,17 @@ public class RTextAreaUI extends BasicTextAreaUI {
             editor.setDisabledTextColor((Color)c);
         }
 
+        // 检查并设置 边框
         Border border = editor.getBorder();
         if (border == null) {
             editor.setBorder(new MarginBorder());
         }
 
+        // 检查并设置 内边距
         Insets margin = editor.getMargin();
         if (margin == null) {
             editor.setMargin(new InsetsUIResource(2, 2, 2, 2));
         }
-
     }
 
     public View create(Element elem) {
