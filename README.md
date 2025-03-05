@@ -4,7 +4,7 @@
 [![Downloads](https://img.shields.io/github/downloads/whwlsfb/BurpCrypto/total?label=Release%20Download)](https://github.com/whwlsfb/BurpCrypto/releases/latest)
 
 BurpCrypto是一款支持多种加密算法以及直接执行浏览器JS代码的BurpSuite插件。
-[English](./README.md) | [简体中文](./README_zh.md)
+[English](./README.md) | [简体中文](./README-zh_CN.md)
 
 ## 功能描述
 
